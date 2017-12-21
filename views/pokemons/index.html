@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="image_container">
+        {% for a in admins %}
+                <img id="main_pic" src="uploads/{{a.picture}}" alt="presentation theme">
+                <h1 class="center" >W E L C O M E</h1>
+                <a href="/travel" title="Nos Voyages"><h4 class="center_enter">E N T E R</h4></a>
+        {% endfor %}
+    </div>
+
+{% endblock %}

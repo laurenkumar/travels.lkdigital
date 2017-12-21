@@ -1,0 +1,87 @@
+{% extends "layout.html" %}
+
+{% block content %}
+	<script src="/materialize.min.js"></script>
+	<script>
+        $(document).ready(function () {
+            var user, to, subject, text;
+            $("#send_email").click(function () {
+                // enter your email account that you want to recieve emails at.
+                to = "dododream7780@gmail.com";
+                name = $("#name").val();
+                user = $("#user_email").val();
+                text = $("#textarea1").val();
+                // $("#message").text("Sending E-mail...Please wait");
+                $.get("/send", {
+                    to: to,
+                    name: name,
+                    user: user,
+                    text: text
+                }, function (data) {
+                    if (data == "sent") {
+                        console.log("Email sent");
+                        $("#modal1").removeClass("hidden");
+                    }
+                });
+            });
+        });
+    </script>
+
+    <!--Modal Trigger Script-->
+    <script>
+	  $(document).ready(function(){
+	    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+	    $('.modal-trigger').leanModal();
+	    $("#close_onclick").click(function () {
+	    	$("#modal1").addClass("hidden");
+	    });
+	  });
+    </script>
+	<div class="container_contact">
+		<h1>CONTACT US</h1>
+		<div id="contact_div">
+			<div id="form" class="row container ">
+
+		        <form id="name-field" class="">
+		            <div class="row">
+		                <div class="input-field  white-text">
+		                    <input class="input-field-text" id="name" type="text">
+		                    <label for="name" class="login-text">Name</label>
+		                </div>
+		            </div>
+		        </form>
+
+		        <form id="email-field" class="">
+		            <div class="row">
+		                <div class="input-field  white-text">
+		                    <input class="input-field-text" id="user_email" type="email" class="validate">
+		                    <label for="email" class="login-text">Email</label>
+		                </div>
+		            </div>
+		        </form>
+
+		        <form id="message-field" class="">
+		            <div class="row">
+		                <div class="input-field  white-text">
+		                    <textarea id="textarea1" class="materialize-textarea" type="text-area"></textarea>
+		                    <label for="textarea1" class="login-text">Message</label>
+		                </div>
+		            </div>
+		        </form>
+		        <a id="send_email" class="modal-trigger" href="#modal1"> Send email </a>
+
+
+		        <!-- Message Sent Modal Structure -->
+		        <div id="modal1" class="modal modal-fixed-footer thank-you-modal hidden">
+		            <div class="modal-content">
+		                <h4>Thank you!</h4>
+		                <p>Your email has been sent. I'll get back to you shortly.</p>
+		            </div>
+		            <div class="modal-footer">
+		                <a href="#!" id="close_onclick" class="modal-action modal-close waves-effect waves-green btn-flat ">Close</a>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+	</div>
+{% endblock %} 

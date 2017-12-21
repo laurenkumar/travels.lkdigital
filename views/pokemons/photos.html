@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<section id="photostack-3" class="photostack">
+				<div>
+					{% for p in photos %}
+						<figure>
+							<a href="" class="photostack-img"><img src="uploads/{{p.picture}}" alt="{{p.description}}, photos of us and what we saw"></a>
+							<figcaption>
+								<h2 class="photostack-title">{{p.name}}</h2>
+								<div class="photostack-back">
+									<p>{{p.description}}</p>
+								</div>
+							</figcaption>
+						</figure>
+					{% endfor %}
+				</div>
+</section>
+<script src="photostack.js"></script>
+<script src="classie.js"></script>
+<script type="text/javascript">
+new Photostack( document.getElementById( 'photostack-3' ), {
+				callback : function( item ) {
+					//console.log(item)
+				}
+			} );
+</script>
+{% endblock %}

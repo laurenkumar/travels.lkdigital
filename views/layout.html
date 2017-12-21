@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <title>LK Travels</title>
+        <meta charset="UTF-8"/>
+        <meta name="description" content="lktravels blog de voyage par deux developpeurs, Dorian Laurenceau Sopika Uthayakumar, travels site for blogging done by two developpers" />
+        <meta name="keywords" content="travels, voyages, voyage, travel, Dorian, Laurenceau, Sopika, Uthayakumar, blog, world, tourism, developpeur, developper, map, cms" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/manifest.json">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+        <meta name="theme-color" content="#ffffff">
+        <script src="modernizr.min.js"></script>
+        <script src="/jquery.min.js"></script>
+        <link href="/style.css" rel="stylesheet">
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110675121-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'UA-110675121-1');
+        </script>
+    </head>
+    <body>
+        <section class="navigation">
+          <div class="nav-container">
+            <div class="brand">
+              <a href="/"><h5>LK TRAVELS</h5></a>
+            </div>
+            <nav>
+              <div class="nav-mobile"><a id="nav-toggle" href="#!"><span></span></a></div>
+              <ul class="nav-list">
+                {% if user %}
+                <li>
+                  <a href="/admin">Administration</a>
+                </li>
+                <li>
+                  <a href="/users/logout">Logout</a>
+                </li>
+                {% endif %}
+                <li>
+                  <a href="/travel">Our Travels</a>
+                </li>
+                <li>
+                  <a href="/photos">Gallery</a>
+                </li>
+                <li>
+                  <a href="/presentation">About us</a>
+                </li>
+                <li>
+                  <a href="/contact">Contact</a>
+                </li>
+                {% if not user %}
+                <li>
+                  <a href="/users/login">Login</a>
+                </li>
+                {% endif %}
+              </ul>
+            </nav>
+          </div>
+        </section>
+        <div class="container">
+            {% block content %}{% endblock %}
+        </div>
+        <footer>
+          <div class="text_center display_flex">
+               © 2017 LK Travels
+          </div>
+        </footer>
+        <script>
+          (function($) { // Begin jQuery
+            $(function() { // DOM ready
+              // If a link has a dropdown, add sub menu toggle.
+              $('nav ul li a:not(:only-child)').click(function(e) {
+                $(this).siblings('.nav-dropdown').toggle();
+                // Close one dropdown when selecting another
+                $('.nav-dropdown').not($(this).siblings()).hide();
+                e.stopPropagation();
+              });
+              // Clicking away from dropdown will remove the dropdown class
+              $('html').click(function() {
+                $('.nav-dropdown').hide();
+              });
+              // Toggle open and close nav styles on click
+              $('#nav-toggle').click(function() {
+                $('nav ul').slideToggle();
+              });
+              // Hamburger to X toggle
+              $('#nav-toggle').on('click', function() {
+                this.classList.toggle('active');
+              });
+            }); // end DOM ready
+          })(jQuery); // end jQuery
+        </script>
+    </body>
+</html>

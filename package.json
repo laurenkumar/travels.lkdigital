@@ -1,0 +1,48 @@
+{
+  "name": "pokedex",
+  "version": "1.0.0",
+  "engines": {
+    "node": "8.8.0"
+  },
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ammap3": "^3.21.11",
+    "babel": "^6.1.18",
+    "babel-core": "^6.1.21",
+    "babel-loader": "^6.1.0",
+    "babel-polyfill": "^6.1.19",
+    "babel-preset-es2015": "^6.1.18",
+    "bcryptjs": "*",
+    "body-parser": "^1.18.2",
+    "bootstrap": "^3.3.7",
+    "bootswatch": "^3.3.7",
+    "connect-flash": "*",
+    "cookie-parser": "^1.4.1",
+    "express": "^4.16.2",
+    "express-handlebars": "*",
+    "express-messages": "*",
+    "express-session": "*",
+    "express-validator": "*",
+    "gsap": "^1.18.0",
+    "http-server": "^0.8.5",
+    "mongodb": "^2.2.33",
+    "mongoose": "^4.13.6",
+    "multer": "^1.3.0",
+    "nodemailer": "0.7.1",
+    "nunjucks": "^3.0.1",
+    "opener": "^1.4.1",
+    "passport": "*",
+    "passport-http": "*",
+    "passport-local": "*",
+    "scrollmagic": "^2.0.5",
+    "uglify-js": "^2.6.1",
+    "webpack": "^1.12.6"
+  }
+}

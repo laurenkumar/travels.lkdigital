@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="display_flex">
+        <div class="flex1 administration">
+            <div>
+                <h2>New Background for The Main Page</h2>
+                <form method="POST" action="/admin" id="admini" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="file">Photo</label>
+                        <input type="file" id="file" name="file">
+                    </div>
+                    <input type="submit" class="btn btn-primary" value="Enregistrer"/>
+                </form>
+            </div>
+            <hr>
+            <div>
+                <h2>Photos for The Gallery</h2>
+                <form method="POST" action="/photos" id="admini" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="name">Title</label>
+                        <input type="text" id="name" name="name" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="file">Photos To Add</label>
+                        <input type="file" id="file" class="align_file" name="file">
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea class="form-control" id="description" name="description"></textarea>
+                    </div>
+                    <input type="submit" class="btn btn-primary" value="Enregistrer"/>
+                </form>
+            </div>
+        </div>
+        <div class="flex1 administration">
+            <div>
+                <div>
+                    <h2>Add a Country</h2>
+                    <form method="POST" action="/country" id="" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="name">Title</label>
+                            <input type="text" id="name" name="name" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Coordinates For The First City</label>
+                            <input type="number" id="latitude" name="latitude" class="form-control" placeholder="latitude" step="any">
+                            <input type="number" id="longitude" name="longitude" class="form-control" placeholder="longitude" step="any">
+                        </div>
+                        <input type="submit" class="btn btn-primary" value="Enregistrer"/>
+                    </form>
+                </div>
+
+                <div>
+                    <h2>City</h2>
+                    <a href="/new" class="btn btn-primary">Add a City and Our Story</a>
+                </div>
+            </div>
+            <hr>
+            <div class="fix_me">
+                {% for p in pokemons | sort('pays') %}
+                    <div class="panel panel-default sorting">
+                        <div class="panel-heading">
+                            <a href="/{{p._id}}">{{p.name}}</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

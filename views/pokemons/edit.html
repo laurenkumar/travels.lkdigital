@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <form method="POST" action="{{endpoint}}" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="name">Pays</label>
+            <input type="text" id="pays" name="pays" class="form-control" value="{{pokemon.pays}}">
+        </div>
+        <div class="form-group">
+            <label for="name">Nom de la ville</label>
+            <input type="text" id="name" name="name" class="form-control" value="{{pokemon.name}}">
+        </div>
+        <div class="form-group">
+            <label for="number">Numéro</label>
+            <input type="number" id="number" name="number" class="form-control" value="{{pokemon.number}}">
+        </div>
+        <div class="form-group">
+            <label for="name">Coordinates For The City</label>
+            <input type="number" id="latitude" name="latitude" class="form-control" placeholder="latitude" value="{{pokemon.latitude}}" step="any">
+            <input type="number" id="longitude" name="longitude" class="form-control" placeholder="longitude" value="{{pokemon.longitude}}" step="any">
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" id="description" name="description">{{pokemon.description}}</textarea>
+        </div>
+        <div class="form-group">
+            <label for="file">Image</label>
+            <input type="file" id="file" name="file">
+        </div>
+        <div class="form-group">
+            <label for="file">Image2</label>
+            <input type="file" id="file2" name="file2">
+        </div>
+        <div class="form-group">
+            <label for="file">Image3</label>
+            <input type="file" id="file3" name="file3">
+        </div>
+        <div class="form-group">
+            {% for type in types %}
+                <label>
+                    <input type="checkbox" name="types[]" value="{{type._id}}" {% if pokemon.types.indexOf(type._id) != -1 %}checked{% endif %}>
+                    {{type.name}}
+                </label>
+            {% endfor %}
+        </div>
+        <input type="submit" class="btn btn-primary" value="Enregistrer"/>
+    </form>
+{% endblock %}

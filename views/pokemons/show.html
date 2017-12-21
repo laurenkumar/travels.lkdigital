@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-sm-3">
+            <img src="/uploads/{{pokemon.picture}}" alt="{{pokemon.name}}" style="width: 100%">
+        </div>
+        <div class="col-sm-9">
+            <h2>{{pokemon.name}} <small>Pokémon n°{{pokemon.number}}</small></h2>
+            <a href="/edit/{{pokemon._id}}" class="btn btn-default">Editer</a>
+            <a href="/delete/{{pokemon._id}}" class="btn btn-danger">Supprimer</a>
+            <hr>
+            <p class="lead">
+                {{pokemon.description}}
+            </p>
+            <h3>Types :</h3>
+            {% for t in pokemon.types %}
+            <a href="/types/{{t.name}}" style="background-color: {{t.color}}" class="label label-default">{{t.name}}</a>
+            {%endfor%}
+        </div>
+    </div>
+
+{% endblock %}
